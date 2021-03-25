@@ -1,9 +1,15 @@
 package projetEncheresPartie1;
 
-public class ExempleUtilisationThreads {
-
-	public ExempleUtilisationThreads() {
-		// TODO Auto-generated constructor stub
+public class ExempleUtilisationThreads implements Runnable {
+	   private String message;
+	   
+	   public ExempleUtilisationThreads(String message) {
+	      this.message = message;
+	   }
+	   
+	   public void run() {
+	      while(true) {
+	         System.out.println(message);
+	      }
+	   }
 	}
-
-}
