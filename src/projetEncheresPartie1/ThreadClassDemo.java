@@ -2,7 +2,7 @@ package projetEncheresPartie1;
 
 public class ThreadClassDemo {
 
-	   public static void main(String [] args) {
+	public static void main(String [] args) {
 	      Thread thread = new GuessANumber(27);
 	      Thread thread2 = new GuessANumber(27);
 	      thread.setName("Le premier utilisateur");
@@ -16,15 +16,15 @@ public class ThreadClassDemo {
 	         thread.join();
 	      } catch (InterruptedException e) {
 	         System.out.println("Thread interrompu.");
-	      }
+	      } 
 	      
 	      if(thread.isAlive() && !thread2.isAlive()) {
-	    	  thread2.interrupt();
-	    	  System.out.println("!!! " + thread.getName() + " a gagné.");
+	    	  thread.stop();
+	    	  System.out.println("\n!!! " + thread2.getName() + " a gagné.");
 	      }
 	      else {
-	    	  thread.interrupt();
-	    	  System.out.println("!!! " + thread2.getName() + " a gagné.");
+	    	  thread2.stop();
+	    	  System.out.println("\n!!! " + thread.getName() + " a gagné.");
 	      }
 	   }
 	}
