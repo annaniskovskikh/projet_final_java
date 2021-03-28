@@ -2,29 +2,37 @@ package projetEncheresPartie1;
 
 public class ThreadClassDemo {
 
-	public static void main(String [] args) {
-	      Thread thread = new GuessANumber(27);
-	      Thread thread2 = new GuessANumber(27);
+	public static void main(String [] args) throws InterruptedException {
+		
+	      Thread thread = new GuessANumber(2);
+	      Thread thread2 = new GuessANumber(2);
 	      thread.setName("Le premier utilisateur");
 	      thread2.setName("Le deuxième utilisateur");
 	      System.out.println(thread.getName() + " commence...");
 	      thread.start();
 	      System.out.println(thread2.getName() + " commence...");
 	      thread2.start();
-	      
-	      try {
-	         thread.join();
-	      } catch (InterruptedException e) {
-	         System.out.println("Thread interrompu.");
-	      } 
-	      
-	      if(thread.isAlive() && !thread2.isAlive()) {
-	    	  thread.stop();
-	    	  System.out.println("\n!!! " + thread2.getName() + " a gagné.");
+
+	      boolean thread1Alive = true;
+	      boolean thread2Alive = true;
+	      while(thread1Alive && thread2Alive) 
+	      {
+	    	  Thread.sleep(100);
+	    	  thread1Alive = thread.isAlive();
+	          thread2Alive = thread2.isAlive();
 	      }
-	      else {
-	    	  thread2.stop();
-	    	  System.out.println("\n!!! " + thread.getName() + " a gagné.");
+
+	      if(thread1Alive)
+	      {
+	    	  thread.interrupt();
+	    	  thread.join();
+	    	  System.out.println(thread2.getName() + " a gagné! ");
+	      }
+	      else
+	      {
+	    	  thread2.interrupt();
+	    	  thread2.join();
+	    	  System.out.println(thread.getName() + " a gagné! ");
 	      }
 	   }
 	}

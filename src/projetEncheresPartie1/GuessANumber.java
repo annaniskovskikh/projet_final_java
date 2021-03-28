@@ -10,10 +10,21 @@ public class GuessANumber extends Thread {
 	      int counter = 0;
 	      int guess = 0;
 	      do {
-	         guess = (int) (Math.random() * 100 + 1);
-	         System.out.println(this.getName() + " dit : " + guess);
-	         counter++;
-	      } while(guess != number);
-	      System.out.println("** Correct! " + this.getName() + " a deviné en " + counter + " essais.**");
+				try
+				{
+					guess = (int) (Math.random() * 10 + 1);
+			         System.out.println(this.getName() + " dit : " + guess);
+			         counter++;
+			         Thread.sleep(1000);
+				}
+				catch (InterruptedException e)
+				{
+					// Activation du flag d'interruption
+					Thread.currentThread().interrupt();
+				}
+	      } while(guess != number && ! isInterrupted());
+	      
+	      if (guess == number )
+	    	  System.out.println("** Correct! " + this.getName() + " deviné en " + counter + " essais.**");
 	   }
 	}
