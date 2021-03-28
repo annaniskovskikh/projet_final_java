@@ -123,8 +123,8 @@ class BibliothecaireTest {
 	void testPreterUnLivre() {
 		//GIVEN	
 		bibliothecaire.supprimeTout();
-		Lecteur lecteur = new Travailleur("nom", "prenom");
-		Lecteur lecteur2 = new Travailleur("nom2", "prenom2");
+		Lecteur lecteur = new Travailleur("nom", "prenom", 41);
+		Lecteur lecteur2 = new Travailleur("nom2", "prenom2", 26);
 		Livre ancienLivre = AjouteLivreAuCatalogue("nomAuteur", "Un titre");
 		Livre ancienLivre2 = AjouteLivreAuCatalogue("nomAuteur2", "Un titre2");
 		Livre ancienLivre3 = AjouteLivreAuCatalogue("nomAuteur3", "Un titre3");
@@ -174,7 +174,7 @@ class BibliothecaireTest {
 		//GIVEN
 		bibliothecaire.supprimeTout();
 		Livre livre = AjouteLivreAuCatalogue("nomAuteur", "Un titre");
-		Lecteur lecteur = new Travailleur("nom", "prenom");		
+		Lecteur lecteur = new Travailleur("nom", "prenom", 52);		
 		boolean exceptionLeve = preterLivreTest(livre, lecteur);
 
 		//WHEN		
@@ -207,8 +207,8 @@ class BibliothecaireTest {
 		Livre premierLivre = AjouteLivreAuCatalogue("nomAuteur", "Un titre présomptueux");
 		Livre deuxiemeLivre = AjouteLivreAuCatalogue("nomAuteur2", "Un titre présomptueux2");
 		
-		Lecteur lecteur = new Travailleur("nom", "prenom");
-		Lecteur lecteur2 = new Travailleur("nom2", "prenom2");
+		Lecteur lecteur = new Travailleur("nom", "prenom", 55);
+		Lecteur lecteur2 = new Travailleur("nom2", "prenom2", 32);
 		ArrayList<Lecteur> listeLecteurs = new ArrayList<Lecteur>();
 		listeLecteurs.add(lecteur);
 		listeLecteurs.add(lecteur2);
@@ -236,9 +236,9 @@ class BibliothecaireTest {
         Livre premierLivre = AjouteLivreAuCatalogue("nomAuteur", "Un titre présomptueux");
         Livre deuxiemeLivre = AjouteLivreAuCatalogue("nomAuteur2", "Un titre présomptueux2");
         Livre troisiemeLivre = AjouteLivreAuCatalogue("nomAuteur3", "Un titre présomptueux3");
-        Etudiant etudiant = new Etudiant("nom", "prenom");
-        Etudiant etudiant2 = new Etudiant("nom2", "prenom2");
-        Lecteur lecteur = new Travailleur("nom3", "prenom3");
+        Etudiant etudiant = new Etudiant("nom", "prenom", 25);
+        Etudiant etudiant2 = new Etudiant("nom2", "prenom2", 23);
+        Lecteur lecteur = new Travailleur("nom3", "prenom3", 19);
         ArrayList<Livre> listeLivresEmpruntes = new ArrayList<Livre>();
         listeLivresEmpruntes.add(premierLivre);
         listeLivresEmpruntes.add(troisiemeLivre);
@@ -269,8 +269,8 @@ class BibliothecaireTest {
 		ArrayList<Livre> listLivresRef = new ArrayList<Livre>();
 		listLivresRef.add(livreUn);
 		listLivresRef.add(livreDeux);
-		Lecteur lecteur = new Travailleur("nom", "prenom");
-		Lecteur lecteur2 = new Travailleur("nom2", "prenom2");
+		Lecteur lecteur = new Travailleur("nom", "prenom", 44);
+		Lecteur lecteur2 = new Travailleur("nom2", "prenom2", 33);
 		boolean exceptionLevee1 = preterLivreTest(livreUn, lecteur);
 		boolean exceptionLevee2 = preterLivreTest(livreDeux, lecteur2);
 
@@ -323,9 +323,9 @@ class BibliothecaireTest {
 		Livre livre = AjouteLivreAuCatalogue("Léon Tolsloï", "Anna Karénine");
 		Livre livre2 = AjouteLivreAuCatalogue("Léon Tolsloï", "Guerre et Paix");
 		Livre livre3 = AjouteLivreAuCatalogue("Victor Hugo", "Les Misérables");
-		Lecteur lecteur = new Travailleur("nom", "prenom");
-		Lecteur lecteur2 = new Travailleur("nom2", "prenom2");
-		Lecteur lecteur3 = new Etudiant("nom3", "prenom3");
+		Lecteur lecteur = new Travailleur("nom", "prenom", 38);
+		Lecteur lecteur2 = new Travailleur("nom2", "prenom2", 41);
+		Lecteur lecteur3 = new Etudiant("nom3", "prenom3", 20);
 		boolean exceptionLevee1 = preterLivreTest(livre, lecteur);
 		boolean exceptionLevee2 = preterLivreTest(livre2, lecteur2);
 		boolean exceptionLevee3 = preterLivreTest(livre3, lecteur3);
@@ -374,7 +374,7 @@ class BibliothecaireTest {
 		//GIVEN
 		bibliothecaire.supprimeTout();
 		Livre livre = AjouteLivreAuCatalogue("nomAuteur", "Un titre pour ce test");
-		Lecteur lecteur = new Travailleur("nom", "prenom");
+		Lecteur lecteur = new Travailleur("nom", "prenom", 50);
 		boolean exceptionLevee1 = preterLivreTest(livre, lecteur);
 		
 		LivreEmprunte livreEmprunte = bibliothecaire.retourneLivreEmprunte(lecteur);
@@ -408,7 +408,7 @@ class BibliothecaireTest {
 		bibliothecaire.supprimeTout();
 		Livre livre = AjouteLivreAuCatalogue("nomAuteur", "Un titre");
 		int ancienMontant = bibliothecaire.getTresorerie();
-		Lecteur lecteur = new Travailleur("nom", "prenom");
+		Lecteur lecteur = new Travailleur("nom", "prenom", 36);
 		boolean exceptionLevee1 = preterLivreTest(livre, lecteur);
 		
 		LivreEmprunte livreEmprunte = bibliothecaire.retourneLivreEmprunte(lecteur);

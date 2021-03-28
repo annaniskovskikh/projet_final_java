@@ -14,16 +14,14 @@ enum CategorieSocioProfessionelle
 };
 
 /**
- * Classe qui présente les informations du lecteur
+ * Classe qui présente les informations du lecteur,
+ * Héritée de la classe Personne
  * @author Anna Niskovskikh, Anaëlle Pierredon et Qi Wang
  * @version 1.4
  */
 
-public abstract class Lecteur {
+public abstract class Lecteur extends Personne{
 	
-	private String nom;
-	private String prenom;
-	private int age;
 	private Amende amende;
 	private boolean livreEnRetard;
 
@@ -32,9 +30,8 @@ public abstract class Lecteur {
 	 * @param nom Nom de famille de lecteur
 	 * @param prenom prenom de lecteur
 	 */
-	public Lecteur(String nom, String prenom ) {
-		this.nom = nom;
-		this.prenom = prenom;
+	public Lecteur(String nom, String prenom, int age ) {
+		super(nom, prenom, age);
 	}
 
 	/**
@@ -58,21 +55,6 @@ public abstract class Lecteur {
 	
 	abstract public CategorieSocioProfessionelle GetCategorie();
 	
-	public String getNom() {
-		return nom;
-	}
-	
-	public String getPrenom() {
-		return prenom;
-	}
-	
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
 	
 	public Amende getAmende() {
 		return amende;

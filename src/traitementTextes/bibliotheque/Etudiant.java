@@ -19,8 +19,8 @@ public class Etudiant extends Lecteur {
 	 * @param nom Nom de famille de l'étudiant venant de la classe Lecteur
 	 * @param prenom Prenom de l'étudiant venant de la classe Lecteur
 	 */
-	public Etudiant(String nom, String prenom) {
-		super(nom, prenom);
+	public Etudiant(String nom, String prenom, int age) {
+		super(nom, prenom, age);
 	}
 	
 	public String getEtablissement() {
