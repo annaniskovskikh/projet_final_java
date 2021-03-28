@@ -3,7 +3,7 @@ package traitementTextes.bibliotheque;
 /**
  * Classe qui présente les informations pour l'étudiant 
  * comprenant son établissement et son numéro d'étudiant
- * aussi avec l'héritage de la classe Lecteur.
+ * héritée de la classe Lecteur.
  * 
  * @author Anna Niskovskikh, Anaëlle Pierredon et Qi Wang
  * @version 1.4

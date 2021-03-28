@@ -1,7 +1,7 @@
 package traitementTextes.bibliotheque;
 
 /**
- * Classe qui présente les informations pour la personne 
+ * Classe qui présente les informations sur la personne 
  * comprenant son nom, prenom et l'age.
  * 
  * @author Anna Niskovskikh et Anaëlle Pierredon 
@@ -13,6 +13,12 @@ public abstract class Personne {
 	private String prenom;
 	private int age;
 
+	/**
+	 * Constructeur de la classe Personne
+	 * @param nom Nom de famille de la personne 
+	 * @param prenom Prenom de la personne 
+	 * @param age Age de la personne 
+	 */
 	public Personne(String nom, String prenom, int age ) {
 		this.nom = nom;
 		this.prenom = prenom;
