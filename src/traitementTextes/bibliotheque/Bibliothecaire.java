@@ -233,7 +233,7 @@ public class Bibliothecaire {
 		lecteur.setLivreEnRetard(false);
 	}
 
-	private HashMap<Auteur, ArrayList<Livre>> getCatalogue() {
+	public HashMap<Auteur, ArrayList<Livre>> getCatalogue() {
 		return catalogue;
 	}
 	
