@@ -17,6 +17,7 @@ public class Acheteur extends Personne{
 	 * @param nom Nom de famille de l'acheteur venant de la classe Personne
 	 * @param prenom Prenom de l'acheteur venant de la classe Personne
 	 * @param age Age de l'acheteur venant de la classe Personne
+	 * @param porteMonnaie le porte monnaie de l'acheteur
 	 */
 	public Acheteur(String nom, String prenom, int age ) {
 		super(nom, prenom, age);

@@ -3,8 +3,10 @@ package traitementTextes.bibliotheque;
 public class EncheresThread extends Thread{
 		//Volatile signifie que la valeur peut être modifiée par les différents thread
 	   volatile private int number;
-	   public EncheresThread(int number) {
+	   private int threadNumber;
+	   public EncheresThread(int number, int threadNumber) {
 	      this.number = number;
+	      this.threadNumber = threadNumber;
 	   }
 	   
 	   public void run() {
@@ -39,5 +41,9 @@ public class EncheresThread extends Thread{
 
 	public int getNumber() {
 		return number;
+	}
+	
+	public int getThreadNumber(){
+		return threadNumber;
 	}
 }
