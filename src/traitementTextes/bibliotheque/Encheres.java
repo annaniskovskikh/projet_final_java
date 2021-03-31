@@ -60,7 +60,8 @@ public class Encheres {
 		  addAcheteur(encheresThreadList, debutEnchere, acheteur1.getPrenom());
 		  addAcheteur(encheresThreadList, debutEnchere, acheteur2.getPrenom());
 		  
-		  /*CommisseurPriseur commisseurPriseur
+		  /* Gestion des enchères
+		  CommisseurPriseur commisseurPriseur
 		  commisseurPriseur.addEncherisseur();
 		  commisseurPriseur.addEncherisseur();
 		  commisseurPriseur.addEncherisseur();
