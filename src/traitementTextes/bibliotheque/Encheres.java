@@ -101,7 +101,8 @@ public class Encheres {
 		  var winnerName = winnerThread.getName();
 		  System.out.println(winnerName + " a gagné! Le montant de l'enchère est de " + winnerThread.getNumber() + ".");
 		  
-		  //ici on peut calculer le reste de porteMonnaie du gagnant et faire une autre enchère??
+		  //ici on peut calculer le reste de porteMonnaie du gagnant et 
+		  //            faire une autre enchère avec les même acheteurs??
 		  //c est juste un exemple pour deux acheteurs :)
 		  if (winnerName == acheteur1.getPrenom()) {
 			  acheteur1.setPorteMonnaie(acheteur1.getPorteMonnaie() - winnerThread.getNumber());
