@@ -52,9 +52,9 @@ public class Encheres {
 		  int debutEnchere = 10;
 		  
 		  Acheteur acheteur1 = new Acheteur("Pierredon", "Anaëlle", 23);
-		  //int porteMonnaieAnaelle = acheteur1.setPorteMonnaie(5000);
+		  acheteur1.setPorteMonnaie(5000);
 		  Acheteur acheteur2 = new Acheteur("Niskovskikh", "Anna", 25);
-		  //int porteMonnaieAnna = acheteur2.setPorteMonnaie(5000);
+		  acheteur2.setPorteMonnaie(5000);
 		  
 		  ArrayList<EncheresThread> encheresThreadList = new ArrayList<EncheresThread>();
 		  addAcheteur(encheresThreadList, debutEnchere, acheteur1.getPrenom());
@@ -102,7 +102,7 @@ public class Encheres {
 		  System.out.println(winnerName + " a gagné! Le montant de l'enchère est de " + winnerThread.getNumber() + ".");
 		  
 		  //ici on peut calculer le reste de porteMonnaie du gagnant et 
-		  //            faire une autre enchère avec les même acheteurs??
+		  //            faire une autre enchère avec les mêmes acheteurs??
 		  //c est juste un exemple pour deux acheteurs :)
 		  if (winnerName == acheteur1.getPrenom()) {
 			  acheteur1.setPorteMonnaie(acheteur1.getPorteMonnaie() - winnerThread.getNumber());
