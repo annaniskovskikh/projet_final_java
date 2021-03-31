@@ -25,7 +25,7 @@ public class Encheres {
 	
 	private static void addAcheteur(ArrayList<EncheresThread> encheresThreadList, int debutEnchere , String name)
 	{
-		var encheresThread = new EncheresThread(debutEnchere,encheresThreadList.size());
+		var encheresThread = new EncheresThread(debutEnchere, encheresThreadList.size());
 		encheresThread.setName(name);
 		encheresThreadList.add(encheresThread);
 	}
@@ -60,7 +60,13 @@ public class Encheres {
 		  addAcheteur(encheresThreadList, debutEnchere, acheteur1.getPrenom());
 		  addAcheteur(encheresThreadList, debutEnchere, acheteur2.getPrenom());
 		  
+		  /*CommisseurPriseur commisseurPriseur
+		  commisseurPriseur.addEncherisseur();
+		  commisseurPriseur.addEncherisseur();
+		  commisseurPriseur.addEncherisseur();
+		  commisseurPriseur.addEncherisseur();
 		  
+		  commisseurPriseur.StartEnchere();*/
 
 	      //System.out.println(thread1.getName() + " et " + thread2.getName() + " veulent acheter ce livre.");
 	      
@@ -95,6 +101,13 @@ public class Encheres {
 		  System.out.println(winnerName + " a gagné! Le montant de l'enchère est de " + winnerThread.getNumber() + ".");
 		  
 		  //ici on peut calculer le reste de porteMonnaie du gagnant et faire une autre enchère??
+		  //c est juste un exemple pour deux acheteurs :)
+		  if (winnerName == acheteur1.getPrenom()) {
+			  acheteur1.setPorteMonnaie(acheteur1.getPorteMonnaie() - winnerThread.getNumber());
+		  }
+		  else {
+			  acheteur2.setPorteMonnaie(acheteur1.getPorteMonnaie() - winnerThread.getNumber());
+		  }
 	}
 }
 	
