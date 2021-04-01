@@ -3,7 +3,7 @@ package traitementTextes.bibliotheque;
 public class EncherisseurThread extends Thread{
 	//Volatile signifie que la valeur peut être modifiée par les différents thread
    private Acheteur acheteur;
- private LivreEnchere livreEnchere;
+   private LivreEnchere livreEnchere;
    private volatile int number = 0;
    
    public EncherisseurThread(Acheteur acheteur, LivreEnchere livreEnchere) {
