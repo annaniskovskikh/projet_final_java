@@ -1,5 +1,11 @@
 package traitementTextes.bibliotheque;
 
+/**
+* Classe qui contient les tests de la classe ComissairePriseur
+* @author Anna Niskovskikh et Anaëlle Pierredon 
+* @version 1.2
+*/
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -9,7 +15,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class EncheresTest {
+class CommissairePriseurTest {
 	
 	private Bibliothecaire bibliothecaire;
 
@@ -59,9 +65,12 @@ class EncheresTest {
 	    acheteursThreadList.add(new EncherisseurThread(acheteur2, guerreEtPaix));
 	    
 	    //WHEN
-	    comissairePriseur.StartEnchereLivre(guerreEtPaix);
+	    EncherisseurThread winner = comissairePriseur.StartEnchereLivre(guerreEtPaix);
 	    
 	    //THEN
+	    assertNotNull(winner);
+	    assertTrue(winner.getNumber() > 0);
+	    assertTrue(winner.getName().equals(acheteur1.getPrenom()) || winner.getName().equals(acheteur2.getPrenom()));
 	    
 	}
 

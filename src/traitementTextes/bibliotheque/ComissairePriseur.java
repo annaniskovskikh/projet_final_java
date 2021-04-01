@@ -25,12 +25,15 @@ public class ComissairePriseur {
 			StartEnchereLivre(livreEnchere);
 	}
 	
-	public void StartEnchereLivre(LivreEnchere livreEnchere) {
+	public EncherisseurThread StartEnchereLivre(LivreEnchere livreEnchere) {
 			System.out.println( "La mise a prix de ce superbe livre est de " + livreEnchere.getDebutEnchere());   
 			// Creation des threads
 		   ArrayList<EncherisseurThread> encherisseurThreadList = new ArrayList<EncherisseurThread>();
 		   for(var encherisseur : encherisseurList)
 			   encherisseurThreadList.add(new EncherisseurThread(encherisseur, livreEnchere));
+		   
+		   for(var encherisseurThread : encherisseurThreadList)
+			   encherisseurThread.setName(encherisseurThread.getAcheteur().getPrenom());
 		   
 		  //Start Thread
 		  encherisseurThreadList.forEach(thread -> thread.start());
@@ -75,5 +78,8 @@ public class ComissairePriseur {
 			 System.out.println( ""+ i + "!"); 
 		  }
 		  System.out.println( auteur.getPrenom() + " remporte l'enchere! Le montant de l'enchère est de " + winnerThread.getNumber() + ".");
+	
+		  return winnerThread;
 	}
+	
 }
