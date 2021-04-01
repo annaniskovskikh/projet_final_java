@@ -14,7 +14,7 @@ import java.util.HashSet;
 import java.util.Map.Entry;
 import java.util.Objects;
 
-public class Bibliothecaire {
+public class Bibliothecaire implements VendeurLivresAuxEncheres {
     
     private int tresorerie = 0;
     private HashMap<Auteur, ArrayList<Livre>> catalogue;
@@ -273,10 +273,24 @@ public class Bibliothecaire {
 	}
 	
 	/**
-     * Méthode qui initialise le catalogue et les livres empruntés à zéro pour pouvoir faire des tests indépendamment.
+     * Méthode qui initialise le catalogue et les livres empruntés à zéro 
+     * pour pouvoir faire des tests indépendamment.
      */
 	public void supprimeTout() {
 		getCatalogue().clear();
 		getLivresEmpruntes().clear();
+	}
+
+	private LivreEnchere creerLivreEnchere(String nomAuteur, String titreLivre, int debutEnchere){
+		Auteur auteur=new Auteur(nomAuteur);
+		return new LivreEnchere(auteur, titreLivre, debutEnchere);
+	}
+	
+	@Override
+	public ArrayList<LivreEnchere> getLivreAVendreAuxEncheres() {	
+		ArrayList<LivreEnchere> livresEnchere = new ArrayList<LivreEnchere>();
+		livresEnchere.add(creerLivreEnchere("Leon Tolstoi", "Guerre et Paix", 10 ));
+		//livresEnchere.add(creerLivreEnchere("Victor Hugo", "Les miserables", 20 ));
+		return livresEnchere;
 	}
 }

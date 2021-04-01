@@ -15,8 +15,8 @@ public class Travailleur extends Lecteur {
 	 * @param prenom Prenom du travailleur
 	 * @param age Age du travailleur
 	 */
-	public Travailleur(String nom, String prenom, int age) {
-		super(nom, prenom, age);
+	public Travailleur(String nom, String prenom) {
+		super(nom, prenom);
 	}
 
 	/**

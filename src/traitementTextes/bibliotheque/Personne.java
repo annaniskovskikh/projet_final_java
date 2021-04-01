@@ -19,10 +19,9 @@ public abstract class Personne {
 	 * @param prenom Prenom de la personne 
 	 * @param age Age de la personne 
 	 */
-	public Personne(String nom, String prenom, int age ) {
+	public Personne(String nom, String prenom) {
 		this.nom = nom;
 		this.prenom = prenom;
-		this.age = age;
 	}
 
 	public String getNom() {

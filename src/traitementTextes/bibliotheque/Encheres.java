@@ -22,14 +22,7 @@ public class Encheres {
 	
     Bibliothecaire bibliothec = new Bibliothecaire(catalogue);
 	HashMap<Auteur, ArrayList<Livre>> catalogue_livres = bibliothec.getCatalogue();
-	
-	private static void addAcheteur(ArrayList<EncheresThread> encheresThreadList, int debutEnchere , String name)
-	{
-		var encheresThread = new EncheresThread(debutEnchere, encheresThreadList.size());
-		encheresThread.setName(name);
-		encheresThreadList.add(encheresThread);
-	}
-	
+
 
 	
 	/* Idées :
@@ -47,69 +40,32 @@ public class Encheres {
 	
 	public static void main(String [] args) throws InterruptedException {
 		//Juste pour tester le temps de faire une classe ThreadEnchere qui nous convient
-		  
-		  //debutEnchere --> on peut laisser nb fixe, non?
-		  int debutEnchere = 10;
-		  
-		  Acheteur acheteur1 = new Acheteur("Pierredon", "Anaëlle", 23);
-		  acheteur1.setPorteMonnaie(5000);
-		  Acheteur acheteur2 = new Acheteur("Niskovskikh", "Anna", 25);
-		  acheteur2.setPorteMonnaie(5000);
-		  
-		  ArrayList<EncheresThread> encheresThreadList = new ArrayList<EncheresThread>();
-		  addAcheteur(encheresThreadList, debutEnchere, acheteur1.getPrenom());
-		  addAcheteur(encheresThreadList, debutEnchere, acheteur2.getPrenom());
-		  
-		  /* Gestion des enchères (encherisseur = acheteur)
-		  CommisseurPriseur commisseurPriseur
-		  commisseurPriseur.addEncherisseur();
-		  commisseurPriseur.addEncherisseur();
-		  commisseurPriseur.addEncherisseur();
-		  commisseurPriseur.addEncherisseur();
-		  
-		  commisseurPriseur.StartEnchere();*/
+	  
+		  HashMap<Auteur, ArrayList<Livre>> catalogue = new HashMap<>();		
+		  Bibliothecaire bibliothecaire=new Bibliothecaire(catalogue);
+		  /* Gestion des enchères (encherisseur = acheteur) */
+		  Auteur auteur = new Auteur("Hugo");
+		  ComissairePriseur comissairePriseur = new ComissairePriseur(bibliothecaire);
+		  comissairePriseur.addEncherisseur(new Acheteur("Pierredon", "Anaëlle", auteur));
+		  comissairePriseur.addEncherisseur(new Acheteur("Niskovskikh", "Anna", auteur));
+		  comissairePriseur.StartEnchere();
 
 	      //System.out.println(thread1.getName() + " et " + thread2.getName() + " veulent acheter ce livre.");
 	      
-		  // Start Thread
-		  encheresThreadList.forEach(thread -> thread.start());
-		  Optional<EncheresThread> encheresThread = Optional.empty();  
-		  while(encheresThread.isEmpty())
-		  {
-			  Thread.sleep(100);
-			  encheresThread = encheresThreadList.stream().filter(thread -> thread.isAlive() == false).findFirst();			  
-		  }
-
-		  encheresThreadList.forEach((EncheresThread thread) -> 
-		  {	
-			  if (thread.isAlive() )
-			  {
-				  thread.interrupt();
-				  
-					try
-					{
-						  thread.join();
-					}
-					catch (InterruptedException e)
-					{
-					}
-			  }
-		  });
 		  
 		  
-		  var winnerThread = encheresThreadList.stream().max(Comparator.comparing(EncheresThread::getNumber)).orElseThrow(NoSuchElementException::new);
-		  var winnerName = winnerThread.getName();
-		  System.out.println(winnerName + " a gagné! Le montant de l'enchère est de " + winnerThread.getNumber() + ".");
+		  // Il faudrait aussi vérifier que la somme proposée à superieure à celle proposée avant?
+		  // anna - 10, anaëlle - 12, anna - 11 NON, Ça doit être > 12 comme anaëlle a dit 12. 
 		  
 		  //ici on peut calculer le reste de porteMonnaie du gagnant et 
 		  //            faire une autre enchère avec les mêmes acheteurs??
 		  //c est juste un exemple pour deux acheteurs :)
-		  if (winnerName == acheteur1.getPrenom()) {
+		  /*if (winnerName == acheteur1.getPrenom()) {
 			  acheteur1.setPorteMonnaie(acheteur1.getPorteMonnaie() - winnerThread.getNumber());
 		  }
 		  else {
 			  acheteur2.setPorteMonnaie(acheteur1.getPorteMonnaie() - winnerThread.getNumber());
-		  }
+		  }*/
 	}
 }
 	

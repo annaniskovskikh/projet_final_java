@@ -30,8 +30,8 @@ public abstract class Lecteur extends Personne{
 	 * @param nom Nom de famille de lecteur
 	 * @param prenom prenom de lecteur
 	 */
-	public Lecteur(String nom, String prenom, int age ) {
-		super(nom, prenom, age);
+	public Lecteur(String nom, String prenom) {
+		super(nom, prenom);
 	}
 
 	/**
