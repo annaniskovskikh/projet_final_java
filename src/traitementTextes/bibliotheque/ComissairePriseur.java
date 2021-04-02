@@ -103,7 +103,7 @@ public class ComissairePriseur {
 	 * @param livreEnchere
 	 * @return encherisseurThreadList
 	 */
-	private ArrayList<EncherisseurThread> creerThreads(ArrayList<Acheteur> encherisseurList,LivreEnchere livreEnchere)
+	public ArrayList<EncherisseurThread> creerThreads(ArrayList<Acheteur> encherisseurList,LivreEnchere livreEnchere)
 	{
 		   ArrayList<EncherisseurThread> encherisseurThreadList = new ArrayList<EncherisseurThread>();
 		   for(var encherisseur : encherisseurList)

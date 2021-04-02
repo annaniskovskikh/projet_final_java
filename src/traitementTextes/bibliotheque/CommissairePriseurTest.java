@@ -75,6 +75,31 @@ class CommissairePriseurTest {
 	    assertTrue(winner.getPrenom().equals(acheteur1.getPrenom()) || winner.getPrenom().equals(acheteur2.getPrenom()));
 	    
 	}
+	
+	@Test
+	void testcreerThreads() {
+		//GIVEN
+		Auteur tolstoy = new Auteur("Tolstoy");
+	    LivreEnchere guerreEtPaix = new LivreEnchere(tolstoy, "Guerre et Paix", 15);
+	    
+	    ArrayList<Acheteur> encherisseurList = new ArrayList<Acheteur>();
+	    ArrayList<EncherisseurThread> encherisseurThreadList = new ArrayList<EncherisseurThread>();
+	    ComissairePriseur comissairePriseur = new ComissairePriseur();
+		
+		Acheteur acheteur1 = new Acheteur("Pierredon", "Anaëlle", tolstoy);
+		Acheteur acheteur2 = new Acheteur("Niskovskikh", "Anna", tolstoy);
+		comissairePriseur.addEncherisseur(acheteur1);
+	    comissairePriseur.addEncherisseur(acheteur2);
+	    
+		//WHEN
+		encherisseurThreadList = comissairePriseur.creerThreads(encherisseurList,guerreEtPaix);
+	    
+		//THEN
+		assertNotNull(encherisseurThreadList);
+		for(var encherisseurThread : encherisseurThreadList)
+			assertTrue(encherisseurThread.getName().equals(acheteur1.getPrenom()) || encherisseurThread.getName().equals(acheteur2.getPrenom()));
+	}
+	
 
 	@Test
 	void testGlobal() {
