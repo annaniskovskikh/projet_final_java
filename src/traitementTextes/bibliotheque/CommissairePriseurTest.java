@@ -47,30 +47,32 @@ class CommissairePriseurTest {
 	}
 	
 	@Test
-	void testStartEnchereLivre() {
+	void testStartEnchere() {
 		//GIVEN
 		Auteur tolstoy = new Auteur("Tolstoy");
 	    LivreEnchere guerreEtPaix = new LivreEnchere(tolstoy, "Guerre et Paix", 15);
 	    
-		ComissairePriseur comissairePriseur = new ComissairePriseur(bibliothecaire);
-		bibliothecaire.ajouterLivre(guerreEtPaix);
+		ComissairePriseur comissairePriseur = new ComissairePriseur();
 			
 		Acheteur acheteur1 = new Acheteur("Pierredon", "Anaëlle", tolstoy);
 		Acheteur acheteur2 = new Acheteur("Niskovskikh", "Anna", tolstoy);
 	    comissairePriseur.addEncherisseur(acheteur1);
 	    comissairePriseur.addEncherisseur(acheteur2);
 	    
-	    ArrayList<EncherisseurThread> acheteursThreadList = new ArrayList<EncherisseurThread>();
-	    acheteursThreadList.add(new EncherisseurThread(acheteur1, guerreEtPaix));
-	    acheteursThreadList.add(new EncherisseurThread(acheteur2, guerreEtPaix));
-	    
+	    Acheteur winner;
 	    //WHEN
-	    EncherisseurThread winner = comissairePriseur.StartEnchereLivre(guerreEtPaix);
+	    try {
+	    	winner = comissairePriseur.StartEnchere(guerreEtPaix);
+	    }
+	    catch(EnchereFailure e)
+	    {
+	    	System.out.println( "Exception catché. Le test a échoué");
+	    	return;
+	    }
 	    
 	    //THEN
 	    assertNotNull(winner);
-	    assertTrue(winner.getNumber() > 0);
-	    assertTrue(winner.getName().equals(acheteur1.getPrenom()) || winner.getName().equals(acheteur2.getPrenom()));
+	    assertTrue(winner.getPrenom().equals(acheteur1.getPrenom()) || winner.getPrenom().equals(acheteur2.getPrenom()));
 	    
 	}
 
@@ -85,20 +87,25 @@ class CommissairePriseurTest {
 	    bibliothecaire.ajouterLivre(miserables);
 	    bibliothecaire.ajouterLivre(guerreEtPaix);
 	    
-	    ComissairePriseur comissairePriseur = new ComissairePriseur(bibliothecaire);
-	    comissairePriseur.addEncherisseur(new Acheteur("Pierredon", "Anaëlle", hugo));
-	    comissairePriseur.addEncherisseur(new Acheteur("Niskovskikh", "Anna", hugo));
+	    ComissairePriseur comissairePriseur = new ComissairePriseur();
+	    var acheteur1 = new Acheteur("Pierredon", "Anaëlle", hugo);
+	    var acheteur2 = new Acheteur("Niskovskikh", "Anna", hugo);
+	    comissairePriseur.addEncherisseur(acheteur1);
+	    comissairePriseur.addEncherisseur(acheteur2);
 	  
+	    ArrayList<Acheteur> winnerList;
 	    //WHEN
-	    comissairePriseur.StartEnchere();
+	    try {
+	    	winnerList = comissairePriseur.StartEnchere(bibliothecaire);
+	    }
+	    catch(EnchereFailure e) {
+	    	System.out.println( "Exception catché. Le test a échoué");
+	    	return;
+	    }
 	    
 	    //THEN
-	    assertNotNull(miserables.getAuteur());
-	    assertNotNull(guerreEtPaix.getAuteur());
-	    assertNotNull(bibliothecaire.getCatalogue());
-	    assertNotNull(comissairePriseur);
-	    
-	    
+	    for(var winner : winnerList)
+	    	assertTrue(winner.getPrenom().equals(acheteur1.getPrenom()) || winner.getPrenom().equals(acheteur2.getPrenom()));
 	}
 
 }

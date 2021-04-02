@@ -286,11 +286,24 @@ public class Bibliothecaire implements VendeurLivresAuxEncheres {
 		return new LivreEnchere(auteur, titreLivre, debutEnchere);
 	}
 	
+	/**
+	 * Cette méthode est résérvé à l interface VendeurLivresAuxEncheres
+	 * pour qu il puisse posséder une liste de livres pour les enchères.
+	 * @return livresEnchereList - liste d'éléments de type livreEnchere.
+	 */
 	@Override
 	public ArrayList<LivreEnchere> getLivreAVendreAuxEncheres() {	
-		ArrayList<LivreEnchere> livresEnchere = new ArrayList<LivreEnchere>();
-		livresEnchere.add(creerLivreEnchere("Leon Tolstoi", "Guerre et Paix", 10 ));
-		//livresEnchere.add(creerLivreEnchere("Victor Hugo", "Les miserables", 20 ));
-		return livresEnchere;
+		ArrayList<LivreEnchere> livresEnchereList = new ArrayList<LivreEnchere>();
+		for (Entry<Auteur, ArrayList<Livre>> paire : catalogue.entrySet()) {
+            for (Livre livre: paire.getValue()) {
+            	if (livre instanceof LivreEnchere)
+            	{
+            		var livreEnchere = (LivreEnchere) livre;
+            		livresEnchereList.add(creerLivreEnchere(livreEnchere.getAuteur().getNom(),livreEnchere.getTitre(), livreEnchere.getDebutEnchere()));
+            	}
+            }
+		}
+
+		return livresEnchereList;
 	}
 }

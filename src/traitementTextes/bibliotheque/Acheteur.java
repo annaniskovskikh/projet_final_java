@@ -7,7 +7,7 @@ package traitementTextes.bibliotheque;
  * et son auteurPrefere.
  * 
  * @author Anna Niskovskikh et Anaëlle Pierredon 
- * @version 1.0
+ * @version 1.3
  */
 
 public class Acheteur extends Personne{
@@ -41,5 +41,17 @@ public class Acheteur extends Personne{
 	public void setAuteurPrefere(Auteur auteurPrefere) {
 		this.auteurPrefere = auteurPrefere;
 	}
+	
+	/**
+	 * Cette méthode permet de créer automatiquement
+     * une nouvelle somme des enchères 
+     * pour qu elle soit supérieure à la somme précedente.
+	 * @param int enchereCourante
+	 * @return un int random + enchereCourante
+	 * */
 
+	public int getNouvelleEnchere(int enchereCourante)
+	{
+		return (int) (Math.random() * 10) + enchereCourante;
+	}
 }
