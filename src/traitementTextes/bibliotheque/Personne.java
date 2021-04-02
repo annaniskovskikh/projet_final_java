@@ -17,7 +17,6 @@ public abstract class Personne {
 	 * Constructeur de la classe Personne
 	 * @param nom Nom de famille de la personne 
 	 * @param prenom Prenom de la personne 
-	 * @param age Age de la personne 
 	 */
 	public Personne(String nom, String prenom) {
 		this.nom = nom;

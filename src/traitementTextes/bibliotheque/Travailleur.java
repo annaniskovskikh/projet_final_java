@@ -13,7 +13,6 @@ public class Travailleur extends Lecteur {
 	 * Constructeur de la classe Travailleur
 	 * @param nom Nom de famille du travailleur
 	 * @param prenom Prenom du travailleur
-	 * @param age Age du travailleur
 	 */
 	public Travailleur(String nom, String prenom) {
 		super(nom, prenom);
