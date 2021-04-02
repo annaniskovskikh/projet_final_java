@@ -115,9 +115,9 @@ public class ComissairePriseur {
 	}
 	
 	/***
-	 * Cette méthode permet de récuperer des threads encore "en vie".
+	 * Cette méthode permet d attendre la fin de tous les threads
+	 * et récuperer le gagnant.
 	 * @param encherisseurThreadList
-	 * @return
 	 * @throws EnchereFailure
 	 */
 	private EncherisseurThread waitForAWinner(ArrayList<EncherisseurThread> encherisseurThreadList) throws EnchereFailure 
