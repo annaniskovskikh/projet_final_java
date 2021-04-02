@@ -38,6 +38,10 @@ public class Etudiant extends Lecteur {
 		this.numeroEtudiant = numeroEtudiant;
 	}
 	
+	public void afficherID(Etudiant etudiant) {
+		System.out.println(etudiant.getNumeroEtudiant());
+	}
+	
 	/**
 	 * Méthode pour renvoyer sa catégorie socio-professionnelle
 	 * donc Etudiant pour la classe Etudiant

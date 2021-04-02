@@ -76,6 +76,10 @@ public abstract class Lecteur extends Personne{
 	{
 		return amende.getAmende();
 	}
+	
+	public void afficherID(Lecteur lecteur) {
+		System.out.println(lecteur.getNom()+lecteur.getPrenom());
+	}
 }
 
 /**
