@@ -62,7 +62,7 @@ class CommissairePriseurTest {
 	    Acheteur winner;
 	    //WHEN
 	    try {
-	    	winner = comissairePriseur.StartEnchere(guerreEtPaix);
+	    	winner = comissairePriseur.startEnchere(guerreEtPaix);
 	    }
 	    catch(EnchereFailure e)
 	    {
@@ -96,7 +96,7 @@ class CommissairePriseurTest {
 	    ArrayList<Acheteur> winnerList;
 	    //WHEN
 	    try {
-	    	winnerList = comissairePriseur.StartEnchere(bibliothecaire);
+	    	winnerList = comissairePriseur.startEnchere(bibliothecaire);
 	    }
 	    catch(EnchereFailure e) {
 	    	System.out.println( "Exception catché. Le test a échoué");
