@@ -13,7 +13,7 @@ public class EtudiantTALInalco extends EtudiantTAL {
 	}
 
 	protected String imprimerID(String nom, long numeroEtudiant, String langue) {
-		return super.imprimerID(nom, numeroEtudiant) + "ma langue de spécialité est: " + langue;
+		return super.imprimerID(nom, numeroEtudiant) + "ma langue de spÃ©cialitÃ© est : " + langue;
 	}
 
 	

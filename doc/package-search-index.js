@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"traitementTextes.bibliotheque"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"etudiants"},{"l":"professeurs"},{"l":"projetEncheresPartie1"},{"l":"traitementTextes"},{"l":"traitementTextes.bibliotheque"}];updateSearchResults();
