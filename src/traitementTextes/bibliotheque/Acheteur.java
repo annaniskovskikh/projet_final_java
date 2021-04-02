@@ -18,7 +18,7 @@ public class Acheteur extends Personne{
 	 * Constructeur de la classe Acheteur
 	 * @param nom Nom de famille de l'acheteur venant de la classe Personne
 	 * @param prenom Prenom de l'acheteur venant de la classe Personne
-	 * @param age Age de l'acheteur venant de la classe Personne
+	 * @param auteurPrefere Auteur l auteur préféré de l'acheteur 
 	 * @param porteMonnaie le porte monnaie de l'acheteur
 	 */
 	public Acheteur(String nom, String prenom, Auteur auteurPrefere) {
