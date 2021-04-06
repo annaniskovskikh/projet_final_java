@@ -62,9 +62,11 @@ public class Bibliothecaire implements VendeurLivresAuxEncheres {
     * Méthode permettant de retirer un livre du catalogue
     * @param ancienLivre le livre qu'il faut retirer.
     */
-    public void enleverLivre(Livre ancienLivre) {
+    public void enleverLivre(Livre ancienLivre) throws LivreNonTrouveException, LivreBloquePourEncheres {
         if ((Objects.nonNull(getCatalogue().get(ancienLivre.getAuteur()))) ) {
-            getCatalogue().get(ancienLivre.getAuteur()).remove(ancienLivre);
+        	
+        	verifierEnchereEnCoursSurLivre(ancienLivre);
+        	getCatalogue().get(ancienLivre.getAuteur()).remove(ancienLivre);
         }
     }
 	
@@ -82,13 +84,21 @@ public class Bibliothecaire implements VendeurLivresAuxEncheres {
 		LivreEmprunte livreEmprunteParLecteur = retourneLivreEmprunte(lecteur);
 		BibliothecaireVerificateur.VerifierSiLecteurADejaEmprunteLivre(lecteur, livreEmprunteParLecteur);
 		BibliothecaireVerificateur.VerifierSiLivreDejaEmprunte(getLivresEmpruntes(), livre);
+		verifierEnchereEnCoursSurLivre(livre);
 		
+		var livreEmprunte = creeLivreEmprunte(livre);
+		livreEmprunte.setLecteur(lecteur);
+		getLivresEmpruntes().add(livreEmprunte);
+	}
+	
+	private LivreEmprunte creeLivreEmprunte(Livre livre)
+	{
 		LivreEmprunte livreEmprunte = new LivreEmprunte();
 		livreEmprunte.setNbJourEmprunt(getNbJourEmprunt());
-		livreEmprunte.setLecteur(lecteur);
 		livreEmprunte.setDateEmprunt(LocalDate.now());
 		livreEmprunte.setLivre(livre);
-		getLivresEmpruntes().add(livreEmprunte);
+		
+		return livreEmprunte;
 	}
 	
 	/**
@@ -281,9 +291,14 @@ public class Bibliothecaire implements VendeurLivresAuxEncheres {
 		getLivresEmpruntes().clear();
 	}
 
-	private LivreEnchere creerLivreEnchere(String nomAuteur, String titreLivre, int debutEnchere){
-		Auteur auteur=new Auteur(nomAuteur);
-		return new LivreEnchere(auteur, titreLivre, debutEnchere);
+	public boolean estLivreEmprunte(Livre livre)
+	{
+		var livreEmprunte = creeLivreEmprunte(livre);
+		return getLivresEmpruntes().contains(livreEmprunte);
+	}
+	
+	private int getDiviseurDebutEnchere() {
+		return 5;		
 	}
 	
 	/**
@@ -296,14 +311,44 @@ public class Bibliothecaire implements VendeurLivresAuxEncheres {
 		ArrayList<LivreEnchere> livresEnchereList = new ArrayList<LivreEnchere>();
 		for (Entry<Auteur, ArrayList<Livre>> paire : catalogue.entrySet()) {
             for (Livre livre: paire.getValue()) {
-            	if (livre instanceof LivreEnchere)
+            	if (estLivreEmprunte(livre) == false)
             	{
-            		var livreEnchere = (LivreEnchere) livre;
-            		livresEnchereList.add(creerLivreEnchere(livreEnchere.getAuteur().getNom(),livreEnchere.getTitre(), livreEnchere.getDebutEnchere()));
+            		var livreEnchere = new LivreEnchere(livre, livre.getValeur() / getDiviseurDebutEnchere());
+            		livresEnchereList.add(livreEnchere);
             	}
             }
 		}
 
 		return livresEnchereList;
+	}
+	
+	private Livre getLivre(Livre livre) throws LivreNonTrouveException
+	{
+		Livre livreDansCatalogue = null;
+		var livreListe= getCatalogue().get(livre.getAuteur());
+		if (Objects.nonNull(livreListe)){
+			for(var livreCourant : livreListe )	{
+				if(livreCourant == livre) {
+					livreDansCatalogue = livre;
+					break;
+				}
+			}
+		}
+		
+		BibliothecaireVerificateur.verifierSiLivreNonTrouve(livreDansCatalogue);
+		
+		return livreDansCatalogue; 
+	}
+	
+	public void setEnchereEnCoursSurLivre(Livre livre, boolean etat) throws LivreNonTrouveException
+	{
+		var livreDansCatalogue = getLivre(livre);
+		livreDansCatalogue.setEnchereEnCours(etat);
+	}
+	
+	void verifierEnchereEnCoursSurLivre(Livre livre) throws LivreNonTrouveException, LivreBloquePourEncheres
+	{
+		var livreDansCatalogue = getLivre(livre);
+		BibliothecaireVerificateur.verifierSiLivreBloqueParEncheres(livre);
 	}
 }

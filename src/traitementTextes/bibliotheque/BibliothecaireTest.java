@@ -88,7 +88,12 @@ class BibliothecaireTest {
 		Livre ancienLivre2 = AjouteLivreAuCatalogue("nomAuteur", "Un titre2");
 		
 		//WHEN
-		bibliothecaire.enleverLivre(ancienLivre);
+		try {
+			bibliothecaire.enleverLivre(ancienLivre);
+		} catch (LivreNonTrouveException | LivreBloquePourEncheres e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		//THEN
 		ArrayList<Livre> livres = bibliothecaire.listerOeuvresAuteur(ancienLivre.getAuteur());

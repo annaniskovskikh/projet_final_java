@@ -20,6 +20,8 @@ public class Livre implements Serializable  {
 	private int nbTomes;
 	private String langue;
 	private String theme;
+	private int valeur;
+	private boolean enchereEnCours;
 	
 	/**
 	 * Constructeur de la classe Livre
@@ -30,6 +32,12 @@ public class Livre implements Serializable  {
 	public Livre(Auteur auteur,String titre) {
 		this.auteur=auteur;
 		this.titre=titre;
+	}
+	
+	public Livre(Auteur auteur,String titre,int valeur) {
+		this.auteur=auteur;
+		this.titre=titre;
+		this.valeur = valeur;
 	}
 	
 	/**
@@ -46,8 +54,10 @@ public class Livre implements Serializable  {
 			return true;
 		}
 		if (livre instanceof Livre) {
-			return ((this.getAuteur().equals(((Livre) livre).getAuteur()))
+			boolean estLivreLeMeme = ((this.getAuteur().equals(((Livre) livre).getAuteur()))
 					&& (this.titre.equals(((Livre) livre).getTitre())));
+			
+			return estLivreLeMeme;
 		}
 		return false;
 
@@ -108,6 +118,19 @@ public class Livre implements Serializable  {
 	public void setTheme(String theme) {
 		this.theme = theme;
 	}
+	
+	public int getValeur(){
+		return valeur;
+	}
+	
+	public boolean getEnchereEnCours() {
+		return enchereEnCours;
+	}
+
+	public void setEnchereEnCours(boolean enchereEnCours) {
+		this.enchereEnCours = enchereEnCours;
+	}
+	
 }
 
 /**

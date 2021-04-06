@@ -40,7 +40,7 @@ public class LivreEmprunte {
 	
 	
 	public int hashCode() {
-		return livre.hashCode() + lecteur.hashCode();
+		return livre.hashCode();
 	}
 	
 	public LocalDate getDateEmprunt() {
