@@ -12,8 +12,8 @@
 
 Chemin: **projet_final_java/src/projetEncheresPartie1/**
 
-Pour lancer le script sans Eclipse dans le terminal:
-Lancer depuis : **projet_final_java/**
+Pour lancer le script sans Eclipse dans le terminal 
+depuis : **projet_final_java/**
 
         java -cp bin/ projetEncheresPartie1.ThreadClassDemo
 
@@ -23,8 +23,8 @@ Lancer depuis : **projet_final_java/**
 
 Chemin: **projet_final_java/src/traitementTextes/bibliotheque/**
 
-Pour lancer le script sans Eclipse dans le terminal:
-Lancer depuis : **projet_final_java/**
+Pour lancer le script sans Eclipse dans le terminal 
+depuis : **projet_final_java/**
 
         java -cp bin/ traitementTextes.bibliotheque.ComissairePriseur
             
