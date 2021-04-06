@@ -12,11 +12,10 @@
 
 Chemin: **projet_final_java/src/projetEncheresPartie1/**
 
-Pour lancer le script sans Eclipse dans le terminal: 
+Pour lancer le script sans Eclipse dans le terminal:
+Lancer depuis : **projet_final_java/**
 
-            javac ThreadClassDemo.java GuessANumber.java
-
-            java 
+        java -cp bin/ projetEncheresPartie1.ThreadClassDemo
 
 **Partie 2**
 
@@ -24,9 +23,8 @@ Pour lancer le script sans Eclipse dans le terminal:
 
 Chemin: **projet_final_java/src/traitementTextes/bibliotheque/**
 
-Pour lancer le script sans Eclipse dans le terminal: 
+Pour lancer le script sans Eclipse dans le terminal:
+Lancer depuis : **projet_final_java/**
 
-            javac *.java 
-
-            java 
+        java -cp bin/ traitementTextes.bibliotheque.ComissairePriseur
             
