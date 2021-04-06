@@ -8,7 +8,7 @@
 
 **Partie 1**
 
-*L'exemple simple d'utilisations des Threads*
+*L'exemple simple d'utilisation des Threads*
 
 Chemin: **projet_final_java/src/projetEncheresPartie1/**
 
