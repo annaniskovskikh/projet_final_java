@@ -132,5 +132,45 @@ class CommissairePriseurTest {
 	    for(var winner : winnerList)
 	    	assertTrue(winner.getPrenom().equals(acheteur1.getPrenom()) || winner.getPrenom().equals(acheteur2.getPrenom()));
 	}
+	
+	@Test
+	void testGlobalQuatreAchteurs() {
+		//GIVEN
+	    Auteur hugo = new Auteur("Hugo");
+	    LivreEnchere miserables = new LivreEnchere(hugo, "Les misérables", 10);
+	    Auteur tolstoy = new Auteur("Tolstoy");
+	    LivreEnchere guerreEtPaix = new LivreEnchere(tolstoy, "Guerre et Paix", 15);
+	    
+	    bibliothecaire.ajouterLivre(miserables);
+	    bibliothecaire.ajouterLivre(guerreEtPaix);
+	    
+	    ComissairePriseur comissairePriseur = new ComissairePriseur();
+	    var acheteur1 = new Acheteur("Pierredon", "Anaëlle", hugo);
+	    var acheteur2 = new Acheteur("Niskovskikh", "Anna", hugo);
+	    var acheteur3 = new Acheteur("Rousseau", "Jean-Jacques", hugo);
+	    var acheteur4 = new Acheteur("Kant", "Emmanuel", hugo);
+	    comissairePriseur.addEncherisseur(acheteur1);
+	    comissairePriseur.addEncherisseur(acheteur2);
+	    comissairePriseur.addEncherisseur(acheteur3);
+	    comissairePriseur.addEncherisseur(acheteur4);
+	  
+	    ArrayList<Acheteur> winnerList;
+	    //WHEN
+	    try {
+	    	winnerList = comissairePriseur.startEnchere(bibliothecaire);
+	    }
+	    catch(EnchereFailure e) {
+	    	System.out.println( "Exception catché. Le test a échoué");
+	    	return;
+	    }
+	    
+	    //THEN
+	    for(var winner : winnerList)
+	    	assertTrue(winner.getPrenom().equals(acheteur1.getPrenom()) || 
+	    			   winner.getPrenom().equals(acheteur2.getPrenom()) ||     
+	    			   winner.getPrenom().equals(acheteur3.getPrenom()) ||
+	    			   winner.getPrenom().equals(acheteur4.getPrenom())
+	    			   );
+	}
 
 }
