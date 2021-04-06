@@ -1,8 +1,8 @@
 # projet_final_java
 
-##JAVA: projet final THREADS
+## JAVA: projet final THREADS
 
-###par Anaëlle PIERREDON & Anna NISKOVSKIKH
+### par Anaëlle PIERREDON & Anna NISKOVSKIKH
 
 *Le projet actuel se compose de deux parties :*
 
@@ -13,7 +13,9 @@
 Chemin: **projet_final_java/src/projetEncheresPartie1/**
 
 Pour lancer le script sans Eclipse dans le terminal: 
+
             javac ThreadClassDemo.java GuessANumber.java
+
             java 
 
 **Partie 2**
@@ -23,5 +25,8 @@ Pour lancer le script sans Eclipse dans le terminal:
 Chemin: **projet_final_java/src/traitementTextes/bibliotheque/**
 
 Pour lancer le script sans Eclipse dans le terminal: 
+
             javac *.java 
+
+            java 
             
