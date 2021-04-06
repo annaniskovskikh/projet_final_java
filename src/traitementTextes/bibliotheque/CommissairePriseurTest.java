@@ -134,7 +134,7 @@ class CommissairePriseurTest {
 	}
 	
 	@Test
-	void testGlobalQuatreAchteurs() {
+	void testGlobalQuatreAcheteurs() {
 		//GIVEN
 	    Auteur hugo = new Auteur("Hugo");
 	    LivreEnchere miserables = new LivreEnchere(hugo, "Les misérables", 10);
