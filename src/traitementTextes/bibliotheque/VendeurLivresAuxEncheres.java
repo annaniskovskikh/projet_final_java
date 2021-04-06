@@ -11,4 +11,8 @@ import java.util.ArrayList;
 public interface VendeurLivresAuxEncheres {
 
 	ArrayList<LivreEnchere> getLivreAVendreAuxEncheres();
+	
+	void setEnchereEnCoursSurLivre(Livre livre, boolean etat) throws LivreNonTrouveException;
+	
+	void enleverLivre(Livre ancienLivre) throws LivreNonTrouveException, LivreBloquePourEncheres;
 }

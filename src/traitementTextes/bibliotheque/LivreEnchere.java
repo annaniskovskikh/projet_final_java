@@ -11,15 +11,22 @@ package traitementTextes.bibliotheque;
  * @version 1.0
  */
 
-public class LivreEnchere extends Livre{
+public class LivreEnchere{
 	private int debutEnchere;
 
-	public LivreEnchere(Auteur auteur, String titre, int debutEnchere) {
-		super(auteur, titre);
+	public LivreEnchere(Livre livre, int debutEnchere) {
 		this.debutEnchere = debutEnchere;
+		this.livre = livre;
 	}
 	
 	public int getDebutEnchere() {
 		return debutEnchere;
 	}
+	
+	public Livre getLivre()
+	{
+		return livre;
+	}
+	
+private Livre livre;
 }

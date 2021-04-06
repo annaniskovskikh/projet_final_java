@@ -104,4 +104,25 @@ public class BibliothecaireVerificateur {
 			throw new Exception("Le lecteur '" + lecteur.getNom() +"' n'a pas payé le montant de l'amende. Montant dû : " + amende.getAmende() + ", montant payé : " + amendePayee);
 		}		
 	}
+	
+	static public void verifierLaDisponibiliteDuLivre(Livre livre) throws Exception{
+		if (livre.getEnchereEnCours() == true)
+		{
+			throw new Exception (livre.getTitre() + " est indisponible pour les enchères.");
+		}
+	}
+	
+	static public void verifierSiLivreNonTrouve(Livre livreDansCatalogue) throws LivreNonTrouveException{
+		if(livreDansCatalogue == null)
+		{
+			throw new LivreNonTrouveException(livreDansCatalogue.getTitre() + " n est pas trouvé.");
+		}
+	}
+	
+	static public void verifierSiLivreBloqueParEncheres(Livre livreDansCatalogue) throws LivreBloquePourEncheres{
+		if (livreDansCatalogue.getEnchereEnCours() == true)
+		{
+			throw new LivreBloquePourEncheres(livreDansCatalogue.getTitre() + " n est pas disponible pour les enchères.");
+		}
+	}
 }

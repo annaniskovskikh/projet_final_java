@@ -36,9 +36,10 @@ public class EncherisseurThread extends Thread{
       do {
 			try
 			{
-		        if (acheteur.getAuteurPrefere().getNom() != livreEnchere.getAuteur().getNom())
+				var nomAuteur = livreEnchere.getLivre().getAuteur().getNom();
+				if (acheteur.getAuteurPrefere().getNom() != nomAuteur)
 		        {
-		        	System.out.println( acheteur.getPrenom() + " n est pas interesse par " +  livreEnchere.getAuteur().getNom());
+		        	System.out.println( acheteur.getPrenom() + " n est pas interesse par " +  nomAuteur);
 		        	break;
 		        }
 		        	

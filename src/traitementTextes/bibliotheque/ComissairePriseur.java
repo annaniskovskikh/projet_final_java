@@ -41,13 +41,31 @@ public class ComissairePriseur {
 	 * @return acheteurList
 	 * @throws EnchereFailure
 	 */
-	public ArrayList<Acheteur> startEnchere(VendeurLivresAuxEncheres vendeurLivresAuxEncheres) throws EnchereFailure {
+	public ArrayList<Acheteur> startEnchere(VendeurLivresAuxEncheres vendeurLivresAuxEncheres) throws EnchereFailure,LivreBloquePourEncheres, LivreNonTrouveException {
 		ArrayList<Acheteur> acheteurList = new ArrayList<Acheteur>();
 		for(var livreEnchere : vendeurLivresAuxEncheres.getLivreAVendreAuxEncheres()) {
-			var winner = startEnchere(livreEnchere);
-			if(winner != null)
-				acheteurList.add(winner);
+			Acheteur winner;
+			try
+			{
+				vendeurLivresAuxEncheres.setEnchereEnCoursSurLivre(livreEnchere.getLivre(), true);
+				winner = startEnchere(livreEnchere);
+			}
+			catch(Exception ex)
+			{
+				throw ex;
+			}
+			finally
+			{
+				vendeurLivresAuxEncheres.setEnchereEnCoursSurLivre(livreEnchere.getLivre(), false);
+			}
+			
+			if (winner == null)
+				continue;
+			
+			vendeurLivresAuxEncheres.enleverLivre(livreEnchere.getLivre());
+			acheteurList.add(winner);
 		}
+		
 		return acheteurList;
 	}
 	
@@ -59,10 +77,11 @@ public class ComissairePriseur {
 	 * @throws EnchereFailure
 	 */
 	public Acheteur startEnchere(LivreEnchere livreEnchere) throws EnchereFailure {
-			System.out.println( "La mise a prix de ce superbe livre de " + livreEnchere.getAuteur().getNom()
+			System.out.println( "La mise a prix de ce superbe livre de " + livreEnchere.getLivre().getAuteur().getNom()
 					+ " est de " + livreEnchere.getDebutEnchere());
 			enchereCourante = 0;
-			// Creation des threads
+			
+		   // Creation des threads
 		   var encherisseurThreadList = creerThreads(encherisseurList,livreEnchere);
 		   
 		  //Start Thread
